@@ -35,7 +35,7 @@ namespace ShareClientDotNet
                     {
                         return JsonConvert.DeserializeObject<Dictionary<string, string>>(this._response);
                     }
-                    catch (JsonReaderException err)
+                    catch (JsonReaderException)
                     {
                         return new Dictionary<string, string>()
                         {

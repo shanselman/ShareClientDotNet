@@ -81,7 +81,7 @@ namespace ShareClientDotNet
 
         protected async Task<ShareResponse> dexcomPOST(string url, Dictionary<string, string> data = null)
         {
-            return await dexcomPOST(new Uri(url), data);
+            return await this.dexcomPOST(new Uri(url), data);
         }
 
         protected async Task<ShareResponse> dexcomPOST(Uri url, Dictionary<string, string> data = null)
@@ -112,7 +112,7 @@ namespace ShareClientDotNet
             catch (Exception err)
             {
                 WriteDebug($"Got exception in sending to endpoint {err}");
-                throw err;
+                throw;
             }
         }
 
@@ -187,7 +187,7 @@ namespace ShareClientDotNet
                 WriteDebug($"Could not fetch token because response was not as expected. Network failure, or decoding failure:");
                 WriteDebug($"{err.GetType()}: message:{err.Message}");
 
-                throw err;
+                throw;
             }
         }
 
@@ -240,7 +240,7 @@ namespace ShareClientDotNet
                     else
                     {
                         //rethrow because we don't know how to handle other errors
-                        throw err;
+                        throw ;
                     }
                 }
             } while (result == null && remaining-- > 1);
